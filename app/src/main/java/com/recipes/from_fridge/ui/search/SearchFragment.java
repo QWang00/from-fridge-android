@@ -1,31 +1,29 @@
-package com.recipes.from_fridge.ui.home;
+package com.recipes.from_fridge.ui.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import com.recipes.from_fridge.databinding.FragmentSearchBinding;
 
-import com.recipes.from_fridge.databinding.FragmentHomeBinding;
+public class SearchFragment extends Fragment {
 
-public class HomeFragment extends Fragment {
-
-    private FragmentHomeBinding binding;
+    private FragmentSearchBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        SearchViewModel searchViewModel =
+                new ViewModelProvider(this).get(SearchViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textSearch;
+        searchViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
