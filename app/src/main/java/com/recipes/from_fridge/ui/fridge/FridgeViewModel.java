@@ -1,16 +1,16 @@
-package com.recipes.from_fridge.ui.dashboard;
+package com.recipes.from_fridge.ui.fridge;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class FridgeViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public FridgeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is fridge fragment");
     }
 
     public LiveData<String> getText() {
