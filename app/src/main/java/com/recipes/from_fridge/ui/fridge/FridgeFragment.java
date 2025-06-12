@@ -27,6 +27,7 @@ public class FridgeFragment extends Fragment {
 
         setupRemoveIngredientRecyclerView();
         setupFab();
+        setupClearButton();
         observeViewModel();
         viewModel.loadFridgeIngredients();
         return binding.getRoot();
@@ -70,6 +71,20 @@ public class FridgeFragment extends Fragment {
             // NavHostFragment.findNavController(this).navigate(R.id.action_fridgeFragment_to_searchFragment);
         });
     }
+
+    private void setupClearButton() {
+        binding.btnClearFridge.setOnClickListener(v -> {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Clear Fridge")
+                    .setMessage("Are you sure you want to remove all items from your fridge?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        viewModel.clearFridge();
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                    .show();
+        });
+    }
+
 
 
 
