@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src='@{mode == ActionMode.ADD ? @android:drawable/ic_input_add : @android:drawable/ic_input_delete}'
+            android:src='@{mode == com.recipes.from_fridge.ui.fridge.FridgeAdapter.ActionMode.ADD ? @android:drawable/ic_input_add : @android:drawable/ic_input_delete}'
             android:onClick='@{() -> clickListener.onActionClick(ingredient.ingredient)}' />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
