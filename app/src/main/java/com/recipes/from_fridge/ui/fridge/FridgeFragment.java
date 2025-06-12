@@ -61,7 +61,15 @@ public class FridgeFragment extends Fragment {
     }
 
     private void observeViewModel(){
-        viewModel.getFridgeIngredients().observe(getViewLifecycleOwner(), adapter::setFridgeIngredients);
+        viewModel.getFridgeIngredients().observe(getViewLifecycleOwner(), ingredients -> {
+            adapter.setFridgeIngredients(ingredients);
+
+            if (ingredients == null || ingredients.isEmpty()) {
+                binding.tvEmptyMessage.setVisibility(View.VISIBLE);
+            } else {
+                binding.tvEmptyMessage.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void setupFab() {
