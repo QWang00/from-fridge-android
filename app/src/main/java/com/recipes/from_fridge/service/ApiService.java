@@ -1,6 +1,7 @@
 package com.recipes.from_fridge.service;
 
 import com.recipes.from_fridge.model.FridgeIngredient;
+import com.recipes.from_fridge.model.Ingredient;
 import com.recipes.from_fridge.model.RecipeDetail;
 import com.recipes.from_fridge.model.RecipePreview;
 import java.util.List;
@@ -32,5 +33,10 @@ public interface ApiService {
     Call<RecipeDetail> getRecipeDetail(
             @Path("id") Integer recipeId,
             @Query("matchedIngredients") List<String> matchedIngredients
+    );
+
+    @GET("ingredients/search")
+    Call<List<Ingredient>> searchIngredients(
+            @Query("query") String query
     );
 }
