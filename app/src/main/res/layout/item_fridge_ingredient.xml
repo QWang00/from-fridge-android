@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="12dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Placeholder -->
-    <ImageView
-        android:id="@+id/img_ingredient_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_placeholder_ingredient"
-        android:contentDescription="Ingredient Icon"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:scaleType="centerCrop"
-    android:layout_marginEnd="8dp" />
+    <data>
+        <variable
+            name="ingredient"
+            type="com.recipes.from_fridge.model.FridgeIngredient" />
+        <variable
+            name="clickListener"
+            type="com.recipes.from_fridge.ui.fridge.FridgeAdapter.OnActionClickListener" />
+        <variable
+            name="mode"
+            type="com.recipes.from_fridge.ui.fridge.FridgeAdapter.ActionMode" />
+    </data>
 
-    <!-- Ingredient Name-->
-    <TextView
-        android:id="@+id/tv_ingredient_name"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ingredient"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/img_ingredient_icon"
-        app:layout_constraintEnd_toStartOf="@id/btn_action"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:padding="12dp">
 
-    <!-- Action Button -->
-    <ImageButton
-        android:id="@+id/btn_action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Action"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/img_ingredient_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_placeholder_ingredient"
+            android:contentDescription="Ingredient Icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="8dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_ingredient_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{ingredient.ingredient.name}"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/img_ingredient_icon"
+            app:layout_constraintEnd_toStartOf="@id/btn_action"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Action"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src='@{mode == ActionMode.ADD ? @android:drawable/ic_input_add : @android:drawable/ic_input_delete}'
+            android:onClick='@{() -> clickListener.onActionClick(ingredient.ingredient)}' />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
