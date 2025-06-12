@@ -18,7 +18,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
     }
 
     public interface OnActionClickListener {
-        void onActionClick(Ingredient ingredient);
+        void onActionClick(FridgeIngredient ingredient);
     }
 
     private List<FridgeIngredient> fridgeIngredients = new ArrayList<>();

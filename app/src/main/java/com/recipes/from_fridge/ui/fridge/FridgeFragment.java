@@ -40,19 +40,19 @@ public class FridgeFragment extends Fragment {
 
     private void setupRemoveIngredientRecyclerView(){
         adapter = new FridgeAdapter(
-                ingredient -> {
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Remove Fridge Ingredient").setMessage("Are you sure you want to remove \"" + ingredient.getName() + "\"from your fridge?")
-            .setPositiveButton("Yes", (dialog, which)->{
-                viewModel.removeIngredientFromFridge(ingredient);
-            })
-                    .setNegativeButton("Cancel", (dialog, which)->{
-                        dialog.dismiss();
-                    })
-                    .show();
-        },
-
-            FridgeAdapter.ActionMode.REMOVE
+                fridgeIngredient -> {
+                    new AlertDialog.Builder(requireContext())
+                            .setTitle("Remove Fridge Ingredient")
+                            .setMessage("Are you sure you want to remove \"" + fridgeIngredient.getIngredient().getName() + "\" from your fridge?")
+                            .setPositiveButton("Yes", (dialog, which) -> {
+                                viewModel.removeIngredientFromFridge(fridgeIngredient);
+                            })
+                            .setNegativeButton("Cancel", (dialog, which) -> {
+                                dialog.dismiss();
+                            })
+                            .show();
+                },
+                FridgeAdapter.ActionMode.REMOVE
         );
 
         binding.myFridgeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

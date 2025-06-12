@@ -29,9 +29,9 @@ public class FridgeViewModel extends ViewModel {
         });
     }
 
-    public void removeIngredientFromFridge(Ingredient ingredient) {
+    public void removeIngredientFromFridge(FridgeIngredient fridgeIngredient) {
         repository.removeIngredientFromFridge(
-                ingredient.getId(),
+                fridgeIngredient.getId(),
                 this::loadFridgeIngredients,
                 () -> {}
         );
