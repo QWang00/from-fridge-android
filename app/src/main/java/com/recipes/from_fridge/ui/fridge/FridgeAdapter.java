@@ -21,7 +21,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
         void onActionClick(Ingredient ingredient);
     }
 
-    private List<FridgeIngredient> ingredients = new ArrayList<>();
+    private List<FridgeIngredient> fridgeIngredients = new ArrayList<>();
     private final OnActionClickListener listener;
     private final ActionMode mode;
 
@@ -30,8 +30,8 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
         this.mode = mode;
     }
 
-    public void setIngredients(List<FridgeIngredient> newIngredients) {
-        this.ingredients = newIngredients;
+    public void setFridgeIngredients(List<FridgeIngredient> newIngredients) {
+        this.fridgeIngredients = newIngredients;
         notifyDataSetChanged();
     }
 
@@ -45,13 +45,13 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
 
     @Override
     public void onBindViewHolder(@NonNull FridgeViewHolder holder, int position) {
-        FridgeIngredient fridgeIngredient = ingredients.get(position);
+        FridgeIngredient fridgeIngredient = fridgeIngredients.get(position);
         holder.bind(fridgeIngredient, listener, mode);
     }
 
     @Override
     public int getItemCount() {
-        return ingredients != null ? ingredients.size() : 0;
+        return fridgeIngredients != null ? fridgeIngredients.size() : 0;
     }
 
     static class FridgeViewHolder extends RecyclerView.ViewHolder {
