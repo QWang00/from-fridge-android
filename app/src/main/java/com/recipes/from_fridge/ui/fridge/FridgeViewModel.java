@@ -6,16 +6,16 @@ import androidx.lifecycle.ViewModel;
 import com.recipes.from_fridge.repository.FridgeIngredientRepository;
 import com.recipes.from_fridge.model.FridgeIngredient;
 import com.recipes.from_fridge.model.Ingredient;
+import com.recipes.from_fridge.service.RetrofitInstance;
 import java.util.List;
 
 public class FridgeViewModel extends ViewModel {
 
-    private final FridgeIngredientRepository repository;
+    private final FridgeIngredientRepository repository = new FridgeIngredientRepository(RetrofitInstance.getApiService());;
 
     private final MutableLiveData<List<FridgeIngredient>> fridgeIngredients = new MutableLiveData<>();
 
-    public FridgeViewModel(FridgeIngredientRepository repository) {
-        this.repository = repository;
+    public FridgeViewModel() {
         loadFridgeIngredients();
     }
 
