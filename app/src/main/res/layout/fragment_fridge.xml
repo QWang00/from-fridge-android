@@ -40,7 +40,7 @@
         android:id="@+id/btn_clear_fridge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🗑️ Clear Fridge"
+        android:text="Clear Fridge"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/text_fridge"
         app:layout_constraintEnd_toEndOf="parent"
