@@ -6,28 +6,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.recipes.from_fridge.databinding.ItemFridgeIngredientBinding;
 import com.recipes.from_fridge.model.FridgeIngredient;
-import com.recipes.from_fridge.model.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeViewHolder> {
 
-    public enum ActionMode {
-        ADD,
-        REMOVE
-    }
-
-    public interface OnActionClickListener {
-        void onActionClick(FridgeIngredient ingredient);
+    public interface OnDeleteClickListener {
+        void onDeleteClick(FridgeIngredient ingredient);
     }
 
     private List<FridgeIngredient> fridgeIngredients = new ArrayList<>();
-    private final OnActionClickListener listener;
-    private final ActionMode mode;
+    private final OnDeleteClickListener listener;
 
-    public FridgeAdapter(OnActionClickListener listener, ActionMode mode) {
+
+    public FridgeAdapter(OnDeleteClickListener listener) {
         this.listener = listener;
-        this.mode = mode;
     }
 
     public void setFridgeIngredients(List<FridgeIngredient> newIngredients) {
@@ -46,7 +39,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
     @Override
     public void onBindViewHolder(@NonNull FridgeViewHolder holder, int position) {
         FridgeIngredient fridgeIngredient = fridgeIngredients.get(position);
-        holder.bind(fridgeIngredient, listener, mode);
+        holder.bind(fridgeIngredient, listener);
     }
 
     @Override
@@ -63,10 +56,9 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
             this.binding = binding;
         }
 
-        public void bind(FridgeIngredient fridgeIngredient, OnActionClickListener listener, ActionMode mode) {
+        public void bind(FridgeIngredient fridgeIngredient, OnDeleteClickListener  listener) {
             binding.setIngredient(fridgeIngredient);
             binding.setClickListener(listener);
-            binding.setMode(mode);
             binding.executePendingBindings();
         }
     }

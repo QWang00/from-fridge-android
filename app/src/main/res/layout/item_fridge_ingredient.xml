@@ -8,10 +8,8 @@
             type="com.recipes.from_fridge.model.FridgeIngredient" />
         <variable
             name="clickListener"
-            type="com.recipes.from_fridge.ui.fridge.FridgeAdapter.OnActionClickListener" />
-        <variable
-            name="mode"
-            type="com.recipes.from_fridge.ui.fridge.FridgeAdapter.ActionMode" />
+            type="com.recipes.from_fridge.ui.fridge.FridgeAdapter.OnDeleteClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,21 +36,21 @@
             android:text="@{ingredient.ingredient.name}"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@id/img_ingredient_icon"
-            app:layout_constraintEnd_toStartOf="@id/btn_action"
+            app:layout_constraintEnd_toStartOf="@id/btn_remove"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageButton
-            android:id="@+id/btn_action"
+            android:id="@+id/btn_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Action"
+            android:contentDescription="Remove"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src='@{mode == com.recipes.from_fridge.ui.fridge.FridgeAdapter.ActionMode.ADD ? @android:drawable/ic_input_add : @android:drawable/ic_input_delete}'
-            android:onClick='@{() -> clickListener.onActionClick(ingredient)}' />
+            android:src="@android:drawable/ic_input_delete"
+            android:onClick='@{() -> clickListener.onDeleteClick(ingredient)}' />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
