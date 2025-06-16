@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import com.recipes.from_fridge.R;
 import com.recipes.from_fridge.databinding.FragmentFridgeBinding;
 
 public class FridgeFragment extends Fragment {
@@ -52,8 +55,7 @@ public class FridgeFragment extends Fragment {
                                 dialog.dismiss();
                             })
                             .show();
-                },
-                FridgeAdapter.ActionMode.REMOVE
+                }
         );
 
         binding.myFridgeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -74,9 +76,8 @@ public class FridgeFragment extends Fragment {
 
     private void setupFab() {
         binding.fabAddIngredient.setOnClickListener(v -> {
-            // TODO: 跳转到添加页面
-            // 如果你用 Navigation Component:
-            // NavHostFragment.findNavController(this).navigate(R.id.action_fridgeFragment_to_searchFragment);
+            NavController navController = NavHostFragment.findNavController(FridgeFragment.this);
+            navController.navigate(R.id.navigation_add_ingredient);
         });
     }
 

@@ -17,4 +17,10 @@
         android:label="@string/title_fridge"
         tools:layout="@layout/fragment_fridge" />
 
+    <fragment
+        android:id="@+id/navigation_add_ingredient"
+        android:name="com.recipes.from_fridge.ui.fridge.AddIngredientFragment"
+        android:label="@String/title_add_ingredient"
+        tools:layout="@layout/fragment_add_ingredient" />
+
 </navigation>
