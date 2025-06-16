@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.recipes.from_fridge.repository.FridgeIngredientRepository;
 import com.recipes.from_fridge.model.FridgeIngredient;
-import com.recipes.from_fridge.model.Ingredient;
 import com.recipes.from_fridge.service.RetrofitInstance;
 import java.util.List;
 
