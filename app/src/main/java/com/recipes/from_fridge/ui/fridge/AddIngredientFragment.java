@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavHostController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.recipes.from_fridge.databinding.FragmentAddIngredientBinding;
 
@@ -27,7 +29,9 @@ public class AddIngredientFragment extends Fragment {
         binding = FragmentAddIngredientBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(AddIngredientViewModel.class);
         binding.setLifecycleOwner(getViewLifecycleOwner());
-
+        binding.btnBack.setOnClickListener(v ->{
+            NavHostFragment.findNavController(this).navigateUp();
+        });
         setupRecyclerView();
         setupSearchBox();
 
