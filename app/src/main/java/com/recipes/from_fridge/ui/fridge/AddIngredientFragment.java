@@ -1,12 +1,12 @@
 package com.recipes.from_fridge.ui.fridge;
 
-import static java.security.AccessController.getContext;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -36,13 +36,29 @@ public class AddIngredientFragment extends Fragment {
 
     private void setupRecyclerView() {
         adapter = new SearchIngredientAdapter(ingredient -> {
+        viewModel.addIngredientToFridge(ingredient, new AddCallback() {
+            @Override
+            public void onSuccess(String message) {
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onFailure(String error) {
+                Toast.makeText(requireContext(),error, Toast.LENGTH_SHORT).show();
+
+            }
+        });
         });
 
         binding.searchIngredientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.searchIngredientRecyclerView.setAdapter(adapter);
 
         viewModel.getSearchResults().observe(getViewLifecycleOwner(), adapter::setIngredients);
+    }
+
+    public interface AddCallback{
+        void onSuccess(String message);
+        void onFailure(String error);
     }
 
     private void setupSearchBox() {
