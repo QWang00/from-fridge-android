@@ -1,8 +1,10 @@
 package com.recipes.from_fridge.ui.fridge;
 
+import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import com.recipes.from_fridge.model.FridgeIngredient;
 import com.recipes.from_fridge.model.Ingredient;
 import com.recipes.from_fridge.service.ApiService;
 import com.recipes.from_fridge.service.RetrofitInstance;
@@ -40,6 +42,24 @@ public class AddIngredientViewModel extends ViewModel {
         });
     }
 
+    public void addIngredientToFridge(Ingredient ingredient, AddIngredientFragment.AddCallback callback) {
+        apiService.addIngredientToFridge(ingredient.getName()).enqueue(new Callback<FridgeIngredient>() {
+            @Override
+            public void onResponse(Call<FridgeIngredient> call, Response<FridgeIngredient> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String name = response.body().getIngredient().getName();
+                    callback.onSuccess("Added " + name + " to your fridge.");
+                } else {
+                    callback.onFailure("Add failed. Error code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FridgeIngredient> call, Throwable t) {
+                callback.onFailure("Add failed: " + t.getMessage());
+            }
+        });
+    }
 
 
 
