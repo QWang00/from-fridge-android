@@ -74,7 +74,7 @@
         app:layout_constraintBottom_toTopOf="@id/fab_add_ingredient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_fridge_ingredient"
+        tools:listitem="@layout/item_fridge_ingredient_remove"
         app:adapter="@{adapter}"
         />
 
