@@ -12,11 +12,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.recipes.from_fridge.R;
-import com.recipes.from_fridge.databinding.FragmentFridgeBinding;
+import com.recipes.from_fridge.databinding.FridgeFragmentBinding;
 
 public class FridgeFragment extends Fragment {
     private FridgeViewModel viewModel;
-    private FragmentFridgeBinding binding;
+    private FridgeFragmentBinding binding;
     private FridgeAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -24,7 +24,7 @@ public class FridgeFragment extends Fragment {
        viewModel =
                 new ViewModelProvider(this).get(FridgeViewModel.class);
 
-        binding = FragmentFridgeBinding.inflate(inflater, container, false);
+        binding = FridgeFragmentBinding.inflate(inflater, container, false);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getViewLifecycleOwner());
 

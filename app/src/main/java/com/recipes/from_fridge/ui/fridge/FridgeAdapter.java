@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.recipes.from_fridge.databinding.ItemFridgeIngredientBinding;
+import com.recipes.from_fridge.databinding.FridgeItemFridgeIngredientBinding;
 import com.recipes.from_fridge.model.FridgeIngredient;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
     @Override
     public FridgeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemFridgeIngredientBinding binding = ItemFridgeIngredientBinding.inflate(inflater, parent, false);
+        FridgeItemFridgeIngredientBinding binding = FridgeItemFridgeIngredientBinding.inflate(inflater, parent, false);
         return new FridgeViewHolder(binding);
     }
 
@@ -49,9 +49,9 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
 
     static class FridgeViewHolder extends RecyclerView.ViewHolder {
 
-        private final ItemFridgeIngredientBinding binding;
+        private final FridgeItemFridgeIngredientBinding binding;
 
-        public FridgeViewHolder(@NonNull ItemFridgeIngredientBinding binding) {
+        public FridgeViewHolder(@NonNull FridgeItemFridgeIngredientBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
