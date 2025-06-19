@@ -23,4 +23,19 @@
         android:label="@String/title_add_ingredient"
         tools:layout="@layout/fridge_fragment_add" />
 
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.recipes.from_fridge.ui.search.SearchFragment"
+        android:label="Search" >
+
+        <action
+            android:id="@+id/action_search_to_selectIngredient"
+            app:destination="@id/selectIngredientFragment" />
+
+        <action
+            android:id="@+id/action_search_to_searchResult"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+
+
 </navigation>
