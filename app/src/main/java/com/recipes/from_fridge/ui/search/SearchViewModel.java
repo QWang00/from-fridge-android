@@ -59,7 +59,7 @@ public class SearchViewModel extends ViewModel {
     public void searchRecipes() {
         List<Ingredient> selected = selectedIngredients.getValue();
         if (selected == null || selected.isEmpty() || recipeRepository == null) {
-            matchedRecipes.setValue(new ArrayList<>()); // 空结果
+            matchedRecipes.setValue(new ArrayList<>());
             return;
         }
 
