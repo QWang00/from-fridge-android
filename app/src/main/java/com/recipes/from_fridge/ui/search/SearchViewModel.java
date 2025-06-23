@@ -1,17 +1,17 @@
 package com.recipes.from_fridge.ui.search;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.recipes.from_fridge.model.Ingredient;
 import com.recipes.from_fridge.model.RecipePreview;
 import com.recipes.from_fridge.repository.RecipeRepository;
+import com.recipes.from_fridge.util.AppContextProvider;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ViewModel that manages ingredient selection and recipe search.
- */
 public class SearchViewModel extends ViewModel {
 
     private final MutableLiveData<List<Ingredient>> selectedIngredients = new MutableLiveData<>(new ArrayList<>());
@@ -40,8 +40,16 @@ public class SearchViewModel extends ViewModel {
         List<Ingredient> current = selectedIngredients.getValue();
         if (current == null) current = new ArrayList<>();
 
+        if (current.size() >= 5) {
+            showToast("You can select up to 5 ingredients.");
+            return;
+        }
+
         for (Ingredient i : current) {
-            if (i.getId().equals(ingredient.getId())) return;
+            if (i.getId().equals(ingredient.getId())) {
+                showToast("You've already selected this ingredient.");
+                return;
+            }
         }
 
         current.add(ingredient);
@@ -78,4 +86,9 @@ public class SearchViewModel extends ViewModel {
     public void clearSelectedIngredients() {
         selectedIngredients.setValue(new ArrayList<>());
     }
+
+    private void showToast(String message) {
+        Toast.makeText(AppContextProvider.getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
 }
