@@ -3,43 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/searchFragment">
+    app:startDestination="@id/searchFragment">
 
-    <!-- 搜索页 -->
+    <!-- Search -->
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.recipes.from_fridge.ui.search.SearchFragment"
-        android:label="Search" >
+        android:label="Search"
+        tools:layout="@layout/search_fragment">
+
+        <!-- From Search to More Ingredient -->
         <action
             android:id="@+id/action_search_to_selectIngredient"
             app:destination="@id/selectIngredientFragment" />
+
+        <!-- From Search to Recipe Result -->
         <action
             android:id="@+id/action_search_to_searchResult"
             app:destination="@id/searchResultFragment" />
     </fragment>
 
-    <!-- 食材选择页 -->
+    <!-- Select More Ingredient -->
     <fragment
         android:id="@+id/selectIngredientFragment"
         android:name="com.recipes.from_fridge.ui.search.select_more_ingredient.SelectIngredientFragment"
         android:label="Select Ingredient"
         tools:layout="@layout/search_fragment_more_ingredient" />
 
-    <!-- 搜索结果页 -->
+    <!-- Search Result -->
     <fragment
         android:id="@+id/searchResultFragment"
         android:name="com.recipes.from_fridge.ui.search.search_result.SearchResultFragment"
         android:label="Recipe Results"
-        tools:layout="@layout/search_fragment_result" />
+        tools:layout="@layout/search_fragment_result">
 
-    <!-- 冰箱主页 -->
+        <!-- From Result to Recipe Detail -->
+        <action
+            android:id="@+id/action_searchResult_to_recipeDetail"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+
+    <!-- Recipe Detail -->
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.recipes.from_fridge.ui.search.recipe_detail.RecipeDetailFragment"
+        android:label="Recipe Detail"
+        tools:layout="@layout/search_fragment_recipe_detail" />
+
+    <!-- Fridge -->
     <fragment
         android:id="@+id/navigation_fridge"
         android:name="com.recipes.from_fridge.ui.fridge.FridgeFragment"
         android:label="@string/title_fridge"
         tools:layout="@layout/fridge_fragment" />
 
-    <!-- 添加食材页 -->
+    <!-- Add Ingredient to Fridge -->
     <fragment
         android:id="@+id/navigation_add_ingredient"
         android:name="com.recipes.from_fridge.ui.fridge.AddIngredientFragment"
