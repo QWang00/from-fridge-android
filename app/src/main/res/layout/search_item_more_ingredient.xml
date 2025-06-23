@@ -8,7 +8,7 @@
             type="com.recipes.from_fridge.model.Ingredient" />
         <variable
             name="clickListener"
-            type="com.recipes.from_fridge.ui.search.IngredientSelectAdapter.OnAddClickListener" />
+            type="com.recipes.from_fridge.ui.search.select_more_ingredient.IngredientSelectAdapter.OnAddClickListener" />
 
     </data>
 

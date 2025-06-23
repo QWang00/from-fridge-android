@@ -10,7 +10,7 @@
 
         <variable
             name="adapter"
-            type="com.recipes.from_fridge.ui.search.IngredientSelectAdapter" />
+            type="com.recipes.from_fridge.ui.search.select_more_ingredient.IngredientSelectAdapter" />
     </data>
 
     <LinearLayout
