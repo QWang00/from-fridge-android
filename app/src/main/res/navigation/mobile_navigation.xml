@@ -3,39 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_search">
+    app:startDestination="@+id/searchFragment">
 
+    <!-- 搜索页 -->
     <fragment
-        android:id="@+id/navigation_search"
+        android:id="@+id/searchFragment"
         android:name="com.recipes.from_fridge.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/search_fragment" />
+        android:label="Search" >
+        <action
+            android:id="@+id/action_search_to_selectIngredient"
+            app:destination="@id/selectIngredientFragment" />
+        <action
+            android:id="@+id/action_search_to_searchResult"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
 
+    <!-- 食材选择页 -->
+    <fragment
+        android:id="@+id/selectIngredientFragment"
+        android:name="com.recipes.from_fridge.ui.search.select_more_ingredient.SelectIngredientFragment"
+        android:label="Select Ingredient"
+        tools:layout="@layout/search_fragment_more_ingredient" />
+
+    <!-- 搜索结果页 -->
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.recipes.from_fridge.ui.search.search_result.SearchResultFragment"
+        android:label="Recipe Results"
+        tools:layout="@layout/search_fragment_result" />
+
+    <!-- 冰箱主页 -->
     <fragment
         android:id="@+id/navigation_fridge"
         android:name="com.recipes.from_fridge.ui.fridge.FridgeFragment"
         android:label="@string/title_fridge"
         tools:layout="@layout/fridge_fragment" />
 
+    <!-- 添加食材页 -->
     <fragment
         android:id="@+id/navigation_add_ingredient"
         android:name="com.recipes.from_fridge.ui.fridge.AddIngredientFragment"
-        android:label="@String/title_add_ingredient"
+        android:label="@string/title_add_ingredient"
         tools:layout="@layout/fridge_fragment_add" />
-
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.recipes.from_fridge.ui.search.SearchFragment"
-        android:label="Search" >
-
-        <action
-            android:id="@+id/action_search_to_selectIngredient"
-            app:destination="@id/selectIngredientFragment" />
-
-        <action
-            android:id="@+id/action_search_to_searchResult"
-            app:destination="@id/searchResultFragment" />
-    </fragment>
-
 
 </navigation>
