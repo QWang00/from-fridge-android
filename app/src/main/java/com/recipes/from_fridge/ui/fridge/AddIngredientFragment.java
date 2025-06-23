@@ -14,10 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavHostController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import com.recipes.from_fridge.databinding.FragmentFridgeAddBinding;
+import com.recipes.from_fridge.databinding.FridgeFragmentAddBinding;
 
 public class AddIngredientFragment extends Fragment {
-    private FragmentFridgeAddBinding binding;
+    private FridgeFragmentAddBinding binding;
     private AddIngredientViewModel viewModel;
     private SearchIngredientAdapter adapter;
 
@@ -26,7 +26,7 @@ public class AddIngredientFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentFridgeAddBinding.inflate(inflater, container, false);
+        binding = FridgeFragmentAddBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(AddIngredientViewModel.class);
         binding.setLifecycleOwner(getViewLifecycleOwner());
         binding.btnBack.setOnClickListener(v ->{

@@ -4,8 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.recipes.from_fridge.databinding.ItemIngredientSearchBinding;
+import com.recipes.from_fridge.databinding.FridgeItemAddIngredientBinding;
 import com.recipes.from_fridge.model.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class SearchIngredientAdapter extends RecyclerView.Adapter<SearchIngredie
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemIngredientSearchBinding binding = ItemIngredientSearchBinding.inflate(
+        FridgeItemAddIngredientBinding binding = FridgeItemAddIngredientBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent, false);
         return new ViewHolder(binding);
     }
@@ -48,9 +47,9 @@ public class SearchIngredientAdapter extends RecyclerView.Adapter<SearchIngredie
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ItemIngredientSearchBinding binding;
+        private final FridgeItemAddIngredientBinding binding;
 
-        public ViewHolder(ItemIngredientSearchBinding binding) {
+        public ViewHolder(FridgeItemAddIngredientBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
