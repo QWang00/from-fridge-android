@@ -13,14 +13,11 @@ import com.google.android.material.chip.Chip;
 import com.recipes.from_fridge.R;
 import com.recipes.from_fridge.databinding.SearchFragmentBinding;
 import com.recipes.from_fridge.model.Ingredient;
+import com.recipes.from_fridge.repository.RecipeRepository;
+import com.recipes.from_fridge.service.RetrofitInstance;
 import com.recipes.from_fridge.ui.search.select_fridge_ingredient.SelectFromFridgeDialogFragment;
-
 import java.util.List;
 
-/**
- * Main entry fragment for recipe search.
- * Lets users select ingredients and match recipes.
- */
 public class SearchFragment extends Fragment {
 
     private SearchFragmentBinding binding;
@@ -33,7 +30,9 @@ public class SearchFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         binding = SearchFragmentBinding.inflate(inflater, container, false);
-        searchViewModel = new ViewModelProvider(requireActivity()).get(SearchViewModel.class);
+        RecipeRepository repository = new RecipeRepository(RetrofitInstance.getApiService());
+        SearchViewModelFactory factory = new SearchViewModelFactory(repository);
+        searchViewModel = new ViewModelProvider(requireActivity(), factory).get(SearchViewModel.class);
 
         setupListeners();
         observeSelectedIngredients();

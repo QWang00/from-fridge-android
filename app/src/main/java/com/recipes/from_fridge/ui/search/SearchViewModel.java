@@ -24,10 +24,6 @@ public class SearchViewModel extends ViewModel {
     }
 
 
-    public SearchViewModel() {
-        this.recipeRepository = null;
-    }
-
     public LiveData<List<Ingredient>> getSelectedIngredients() {
         return selectedIngredients;
     }
