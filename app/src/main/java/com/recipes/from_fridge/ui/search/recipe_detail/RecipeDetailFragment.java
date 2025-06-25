@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.bumptech.glide.Glide;
 import com.recipes.from_fridge.databinding.SearchFragmentRecipeDetailBinding;
@@ -59,6 +60,9 @@ public class RecipeDetailFragment extends androidx.fragment.app.Fragment {
         if (detail == null) return;
 
         binding.textTitle.setText(detail.getTitle());
+        binding.textServings.setText("Servings: " + detail.getServings());
+        binding.textDifficulty.setText("Difficulty: " + detail.getDifficulty());
+        binding.textCookTime.setText("Cook Time: " + detail.getCookTime());
 
         Glide.with(this)
                 .load(detail.getImageUrl())
@@ -70,7 +74,7 @@ public class RecipeDetailFragment extends androidx.fragment.app.Fragment {
 
     private void setupBackButton() {
         binding.btnBack.setOnClickListener(v ->
-                requireActivity().onBackPressed()
+                NavHostFragment.findNavController(this).navigateUp()
         );
     }
 
