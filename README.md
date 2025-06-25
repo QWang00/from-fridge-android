@@ -4,6 +4,11 @@
 **From Fridge** is an Android application that helps users discover Chinese recipes based on ingredients they already have at home. It aims to reduce food waste and inspire creativity in everyday cooking by making it easy to manage your virtual fridge and match ingredients to real recipes.
 
 ---
+<h3>🎥 Demo</h3>
+<p >
+  <img src="./screenshots/recipe.gif" width="250"/>
+</p>
+
 
 ## 🔗 Backend API
 
