@@ -49,6 +49,7 @@ public class FridgeFragment extends Fragment {
                             .setTitle("Remove Fridge Ingredient")
                             .setMessage("Are you sure you want to remove \"" + fridgeIngredient.getIngredient().getName() + "\" from your fridge?")
                             .setPositiveButton("Yes", (dialog, which) -> {
+                                adapter.removeItem(fridgeIngredient);
                                 viewModel.removeIngredientFromFridge(fridgeIngredient);
                             })
                             .setNegativeButton("Cancel", (dialog, which) -> {

@@ -62,4 +62,13 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeView
             binding.executePendingBindings();
         }
     }
+
+    public void removeItem(FridgeIngredient ingredient) {
+        int index = fridgeIngredients.indexOf(ingredient);
+        if (index >= 0) {
+            fridgeIngredients.remove(index);
+            notifyItemRemoved(index);
+        }
+    }
+
 }
