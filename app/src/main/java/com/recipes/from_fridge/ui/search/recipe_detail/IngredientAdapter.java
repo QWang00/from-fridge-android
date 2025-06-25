@@ -35,8 +35,14 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
         holder.name.setText(ingredient.getName());
         holder.quantity.setText("Quantity: " + ingredient.getQuantity());
-        holder.preparation.setText("Prep: " + ingredient.getPreparation());
         holder.checkMark.setVisibility(ingredient.isOwned() ? View.VISIBLE : View.GONE);
+        String prep = ingredient.getPreparation();
+        if (prep == null || prep.trim().isEmpty()) {
+            holder.preparation.setVisibility(View.GONE);
+        } else {
+            holder.preparation.setVisibility(View.VISIBLE);
+            holder.preparation.setText("Prep: " + prep);
+        }
     }
 
     @Override
