@@ -62,7 +62,7 @@ public class RecipeDetailFragment extends androidx.fragment.app.Fragment {
         binding.textTitle.setText(detail.getTitle());
         binding.textServings.setText("Servings: " + detail.getServings());
         binding.textDifficulty.setText("Difficulty: " + detail.getDifficulty());
-        binding.textCookTime.setText("Cook Time: " + detail.getCookTime());
+        binding.textCookTime.setText("Cook Time: " + detail.getCookTime() +" min");
 
         Glide.with(this)
                 .load(detail.getImageUrl())
