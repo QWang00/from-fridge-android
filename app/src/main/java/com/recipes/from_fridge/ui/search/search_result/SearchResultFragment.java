@@ -19,6 +19,7 @@ import com.recipes.from_fridge.service.RetrofitInstance;
 import com.recipes.from_fridge.ui.search.SearchViewModel;
 import com.recipes.from_fridge.ui.search.SearchViewModelFactory;
 import com.recipes.from_fridge.ui.search.recipe_detail.RecipeDetailViewModel;
+import com.recipes.from_fridge.ui.search.recipe_detail.RecipeDetailViewModelFactory;
 import java.util.List;
 
 public class SearchResultFragment extends Fragment {
@@ -40,7 +41,9 @@ public class SearchResultFragment extends Fragment {
         SearchViewModelFactory factory = new SearchViewModelFactory(repository);
         searchViewModel = new ViewModelProvider(requireActivity(), factory).get(SearchViewModel.class);
 
-        recipeDetailViewModel = new ViewModelProvider(requireActivity()).get(RecipeDetailViewModel.class);
+        RecipeDetailViewModelFactory detailFactory = new RecipeDetailViewModelFactory(repository);
+        recipeDetailViewModel = new ViewModelProvider(requireActivity(), detailFactory)
+                .get(RecipeDetailViewModel.class);
 
         setupRecyclerView();
         setupObservers();
