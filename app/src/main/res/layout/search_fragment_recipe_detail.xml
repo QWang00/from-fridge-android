@@ -12,10 +12,12 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
+        <!-- LinearLayout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="72dp">
 
             <!-- Back Button -->
             <ImageButton
@@ -30,25 +32,22 @@
             <!-- Recipe Image -->
             <ImageView
                 android:id="@+id/imageRecipe"
-
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                 />
+                android:scaleType="centerCrop" />
 
             <!-- Title -->
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_marginTop="16dp" />
 
-            <!-- Info Row -->
+            <!-- Servings / Difficulty / Time -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,25 +56,39 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp">
 
-            </LinearLayout>
-
-            <!-- Ingredient Table Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="4dp"
-                android:layout_marginBottom="4dp"
-                android:background="@android:color/darker_gray">
-
+                <TextView
+                    android:id="@+id/textServings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Servings: 0"
+                    android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="24dp"
+                    android:id="@+id/textDifficulty"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✓"
-                    android:gravity="center"
-                    android:textStyle="bold" />
+                    android:layout_marginEnd="16dp"
+                    android:text="Difficulty: -"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textCookTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cook Time: 0 min"
+                    android:textSize="14sp" />
             </LinearLayout>
+
+            <!-- Ingredient Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <!-- Ingredient List -->
             <androidx.recyclerview.widget.RecyclerView
@@ -84,15 +97,23 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false" />
 
-            <!-- Steps title -->
+            <!-- Step Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Steps"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
-
-            <!-- Steps RecyclerView -->
+            <!-- Step List -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/stepsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false" />
+
         </LinearLayout>
     </ScrollView>
 </layout>
